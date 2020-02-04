@@ -1,0 +1,32 @@
+<p></p>
+<h1>Books</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Body</th>
+            <th colspan="3"></th>
+        </tr>
+        <tbody>
+            <% @books.each do |b| %>
+            <tr>
+                <th><%= b.title %></th>
+                <th><%= b.body %></th>
+                <th><%= link_to "Show", book_path(b) %></th>
+                <th><%= link_to "Edit", edit_book_path(b) %></th>
+                <th><%= link_to "Destroy", book_path(b), method: :delete %></th>
+            </tr>
+            <% end %>
+        </tbody>
+    </thead>
+</table>
+<%= form_for(@book) do |f| %>
+    <label>Title</label>
+    <%= f.text_field :title %>
+ 
+    <label>Body</label>
+    <%= f.text_field :body %>
+ 
+    <%= f.submit 'Create Book' %>
+ 
+<% end %>
